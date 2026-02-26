@@ -23,6 +23,7 @@ import org.openapitools.openapidiff.core.output.AsciidocRender;
 import org.openapitools.openapidiff.core.output.ConsoleRender;
 import org.openapitools.openapidiff.core.output.HtmlRender;
 import org.openapitools.openapidiff.core.output.JsonRender;
+import org.openapitools.openapidiff.core.output.JsonWriter;
 import org.openapitools.openapidiff.core.output.MarkdownRender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -142,6 +143,13 @@ public class Main {
             .hasArg()
             .argName("file")
             .desc("export diff as json in given file")
+            .build());
+    options.addOption(
+        Option.builder()
+            .longOpt("json-writer")
+            .hasArg()
+            .argName("file")
+            .desc("export diff as lean json in given file")
             .build());
 
     // create the parser
@@ -272,6 +280,12 @@ public class Main {
         FileOutputStream outputStream = new FileOutputStream(line.getOptionValue("json"));
         OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
         jsonRender.render(result, outputStreamWriter);
+      }
+      if (line.hasOption("json-writer")) {
+        JsonWriter jsonWriter = new JsonWriter();
+        FileOutputStream outputStream = new FileOutputStream(line.getOptionValue("json-writer"));
+        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
+        jsonWriter.render(result, outputStreamWriter);
       }
       if (line.hasOption("state")) {
         System.out.println(result.isChanged().getValue());
