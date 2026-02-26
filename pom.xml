@@ -9,7 +9,7 @@
 
     <groupId>org.openapitools.openapidiff</groupId>
     <artifactId>openapi-diff-parent</artifactId>
-    <version>2.1.8-SNAPSHOT</version>
+    <version>2.2.0-lean-json</version>
     <packaging>pom</packaging>
 
     <name>openapi-diff-parent</name>
