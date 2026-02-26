@@ -99,7 +99,7 @@
             <dependency>
                 <groupId>org.openapitools.openapidiff</groupId>
                 <artifactId>openapi-diff-core</artifactId>
-                <version>2.1.8-SNAPSHOT</version>
+                <version>2.2.0-lean-json</version>
             </dependency>
             <dependency>
                 <groupId>org.junit</groupId>
